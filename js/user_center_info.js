@@ -22,12 +22,12 @@ var vm = new Vue({
         this.get_history()
     },
     methods: {
-          // 退出登录按钮
+        // 退出登录按钮
         logoutfunc: function () {
-            var url = this.host + '/logout/';
+            var url = this.host + '/api/logout/';
             axios.delete(url, {
                 responseType: 'json',
-                withCredentials:true,
+                withCredentials: true,
             })
                 .then(response => {
                     location.href = 'login.html';
@@ -36,16 +36,16 @@ var vm = new Vue({
                     console.log(error.response);
                 })
         },
-        get_history:function(){
-             // 添加下列代码, 发送请求, 获取用户的浏览记录信息:
-            axios.get(this.host + '/browse_histories/', {
-                    responseType: 'json',
-                    withCredentials:true,
-                })
+        get_history: function () {
+            // 添加下列代码, 发送请求, 获取用户的浏览记录信息:
+            axios.get(this.host + '/api/browse_histories/', {
+                responseType: 'json',
+                withCredentials: true,
+            })
                 .then(response => {
                     this.histories = response.data.skus;
-                    for(var i=0; i<this.histories.length; i++){
-                      this.histories[i].url='/goods/'+this.histories[i].id + '.html';
+                    for (var i = 0; i < this.histories.length; i++) {
+                        this.histories[i].url = '/goods/' + this.histories[i].id + '.html';
                     }
                 })
                 .catch(error => {
@@ -54,7 +54,7 @@ var vm = new Vue({
         },
         // 获取用户所有的资料
         get_person_info: function () {
-            var url = this.host + '/info/';
+            var url = this.host + '/api/info/';
             axios.get(url, {
                 responseType: 'json',
                 withCredentials: true
@@ -92,7 +92,7 @@ var vm = new Vue({
                 },
                 {
                     responseType: 'json',
-                    withCredentials:true,
+                    withCredentials: true,
                 })
                 // 成功请求的回调
                 .then(response => {

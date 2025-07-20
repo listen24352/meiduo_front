@@ -44,10 +44,10 @@ var vm = new Vue({
             this.check_pwd();
 
             if (this.error_username == false && this.error_pwd == false) {
-                axios.post(this.host + '/login/', {
+                axios.post(this.host + '/api/login/', {
                     username: this.username,
                     password: this.password,
-                    remembered:this.remember,
+                    remembered: this.remember,
                 }, {
                     responseType: 'json',
                     // 发送请求的时候, 携带上cookie
@@ -65,7 +65,7 @@ var vm = new Vue({
                             location.href = return_url;
                         } else if (response.data.code == 400) {
                             this.error_pwd_message = '用户名或密码错误';
-                             this.error_pwd = true;
+                            this.error_pwd = true;
                         }
                     })
                     .catch(error => {
@@ -79,26 +79,26 @@ var vm = new Vue({
             }
         },
         // 用户点击 QQ第三方登录按钮之后, 触发该方法:
-        qq_login: function () {
-            // 获取参数
-            var next = this.get_query_string('next') || '/';
-            // 拼接请求:
-            axios.get(this.host + '/qq/authorization/?next=' + next, {
-                responseType: 'json',
-                withCredentials:true,
-            })
-            // 成功的回调:
-                .then(response => {
-                    if (response.data.code == 0) {
-                        // 成功则跳转
-                        location.href = response.data.login_url;
-                    };
-                })
-                // 失败的回调:
-                .catch(error => {
-                    // 打印处理
-                    console.log(error);
-                })
-        }
+        // qq_login: function () {
+        //     // 获取参数
+        //     var next = this.get_query_string('next') || '/';
+        //     // 拼接请求:
+        //     axios.get(this.host + '/qq/authorization/?next=' + next, {
+        //         responseType: 'json',
+        //         withCredentials: true,
+        //     })
+        //         // 成功的回调:
+        //         .then(response => {
+        //             if (response.data.code == 0) {
+        //                 // 成功则跳转
+        //                 location.href = response.data.login_url;
+        //             };
+        //         })
+        //         // 失败的回调:
+        //         .catch(error => {
+        //             // 打印处理
+        //             console.log(error);
+        //         })
+        // }
     }
 });

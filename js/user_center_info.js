@@ -25,7 +25,7 @@ var vm = new Vue({
         // 退出登录按钮
         logoutfunc: function () {
             var url = this.host + '/api/logout/';
-            axios.delete(url, {
+            axios.post(url, {
                 responseType: 'json',
                 withCredentials: true,
             })
@@ -85,7 +85,7 @@ var vm = new Vue({
             }
 
             // 进行前端页面请求:
-            var url = this.host + '/emails/'
+            var url = this.host + '/api/emails/'
             axios.put(url,
                 {
                     email: this.email

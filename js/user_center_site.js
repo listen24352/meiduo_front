@@ -79,7 +79,7 @@ var vm = new Vue({
         logoutfunc: function () {
             var url = this.host + '/api/logout/';
             // console.log(url)
-            axios.delete(url, {
+            axios.post(url, {
                 responseType: 'json',
                 withCredentials:true,
             })

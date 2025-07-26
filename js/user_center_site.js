@@ -43,7 +43,7 @@ var vm = new Vue({
     watch: {
         'form_address.province_id': function () {
             if (this.form_address.province_id) {
-                axios.get(this.host + '/areas/' + this.form_address.province_id + '/', {
+                axios.get(this.host + '/api/areas/' + this.form_address.province_id + '/', {
                     responseType: 'json',
                     withCredentials:true,
                 })
@@ -60,7 +60,7 @@ var vm = new Vue({
         },
         'form_address.city_id': function () {
             if (this.form_address.city_id) {
-                axios.get(this.host + '/areas/' + this.form_address.city_id + '/', {
+                axios.get(this.host + '/api/areas/' + this.form_address.city_id + '/', {
                     responseType: 'json',
                     withCredentials:true,
                 })
@@ -91,7 +91,7 @@ var vm = new Vue({
                 })
         },
         get_province: function () {
-            axios.get(this.host + '/areas/', {
+            axios.get(this.host + '/api/areas/', {
                 responseType: 'json',
                 withCredentials:true,
             })
@@ -170,7 +170,7 @@ var vm = new Vue({
                 this.form_address.title = this.form_address.receiver;
                 if (this.editing_address_index === '') {
                     // 新增地址
-                    var url = this.host + '/addresses/create/'
+                    var url = this.host + '/api/addresses/create/'
                     axios.post(url, this.form_address, {
                         responseType: 'json',
                         withCredentials: true
@@ -187,7 +187,7 @@ var vm = new Vue({
                 } else {
 
                     // 修改地址
-                    var url = this.host + '/addresses/' + this.addresses[this.editing_address_index - 1].id + '/'
+                    var url = this.host + '/api/addresses/' + this.addresses[this.editing_address_index - 1].id + '/'
                     axios.put(url, this.form_address, {
                         responseType: 'json',
                         withCredentials:true,
@@ -204,7 +204,7 @@ var vm = new Vue({
         },
         // 删除地址
         del_address: function (index) {
-            axios.delete(this.host + '/addresses/' + this.addresses[index].id + '/', {
+            axios.delete(this.host + '/api/addresses/' + this.addresses[index].id + '/', {
                 withCredentials:true,
                 responseType: 'json'
             })
@@ -222,7 +222,7 @@ var vm = new Vue({
         },
         // 获取地址数据:
         get_address: function () {
-            axios.get(this.host + '/addresses/', {
+            axios.get(this.host + '/api/addresses/', {
                 responseType: 'json',
                 withCredentials:true
             })
@@ -242,7 +242,7 @@ var vm = new Vue({
         },
         // 设置默认地址
         set_default: function (index) {
-            var url = this.host + '/addresses/' + this.addresses[index].id + '/default/'
+            var url = this.host + '/api/addresses/' + this.addresses[index].id + '/default/'
              axios.put(url, {}, {
                         responseType: 'json',
                         withCredentials:true,
@@ -270,7 +270,7 @@ var vm = new Vue({
             if (!this.input_title) {
                 alert("请填写标题后再保存！");
             } else {
-                axios.put(this.host + '/addresses/' + this.addresses[index].id + '/title/', {
+                axios.put(this.host + '/api/addresses/' + this.addresses[index].id + '/title/', {
                     title: this.input_title
                 }, {
                     responseType: 'json',

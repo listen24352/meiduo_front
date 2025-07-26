@@ -5,9 +5,9 @@
     <title>美多商城-购物车</title>
     <link rel="stylesheet" type="text/css" href="css/reset.css">
     <link rel="stylesheet" type="text/css" href="css/main.css">
-    <script type="text/javascript" src="js/host.js"></script>
-    <script type="text/javascript" src="js/vue-2.5.16.js"></script>
-    <script type="text/javascript" src="js/axios-0.18.0.min.js"></script>
+    <script type="text/javascript" src="js/office/host.js"></script>
+    <script type="text/javascript" src="js/office/vue-2.5.16.js"></script>
+    <script type="text/javascript" src="js/office/axios-0.18.0.min.js"></script>
 </head>
 <body>
     <div id="app">
@@ -16,7 +16,7 @@
             <div class="welcome fl">欢迎来到美多商城!</div>
             <div class="fr">
                 <div v-if="username" class="login_btn fl">
-                    欢迎您：<em>[[ username ]]</em>
+                    欢迎您：<em>{{username}} </em>
                     <span>|</span>
                     <a @click="logoutfunc">退出</a>
                 </div>
